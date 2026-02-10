@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export function Footer() {
     return (
-        <footer className="relative pt-24 pb-12 overflow-hidden">
+        <footer aria-label="Rodapé" className="relative pt-24 pb-12 overflow-hidden">
             {/* Top Gradient */}
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
             <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-32 bg-primary/10 blur-[100px] -translate-y-1/2" />

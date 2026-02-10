@@ -25,7 +25,7 @@ export function Navbar() {
                         </span>
                     </Link>
 
-                    <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
+                    <nav aria-label="Menu principal" className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
                         <Link href="#mechanism" className="hover:text-foreground transition-colors">Como Funciona</Link>
                         <Link href="#solutions" className="hover:text-foreground transition-colors">Soluções</Link>
                         <Link href="#stats" className="hover:text-foreground transition-colors">Resultados</Link>
