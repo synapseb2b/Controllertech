@@ -7,12 +7,12 @@ import Link from 'next/link';
 
 export function Hero() {
     const { scrollY } = useScroll();
-    const y1 = useTransform(scrollY, [0, 500], [0, 150]);
-    const y2 = useTransform(scrollY, [0, 500], [0, -100]);
-    const opacity = useTransform(scrollY, [0, 400], [1, 0]);
+    const y1 = useTransform(scrollY, [0, 700], [0, 150]);
+    const y2 = useTransform(scrollY, [0, 700], [0, -100]);
+    const opacity = useTransform(scrollY, [0, 700], [1, 0]);
 
     return (
-        <section className="relative pt-40 pb-24 md:pt-52 md:pb-32 overflow-hidden min-h-screen flex items-center">
+        <section className="relative pt-32 pb-20 md:pt-40 md:pb-24 overflow-hidden min-h-screen flex items-center">
             {/* Background Grid */}
             <div className="absolute inset-0 bg-grid opacity-30" />
 

@@ -43,7 +43,7 @@ const solutions = [
 
 export function Solutions() {
     return (
-        <section id="solutions" className="py-24 md:py-32 relative overflow-hidden">
+        <section id="solutions" className="py-20 md:py-28 relative overflow-hidden">
             <div className="container mx-auto px-4">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -66,7 +66,7 @@ export function Solutions() {
                             transition={{ delay: index * 0.1 }}
                             className={`relative group ${solution.popular ? 'lg:-translate-y-4 pt-4' : ''}`}
                         >
-                            <div className={`h-full flex flex-col p-8 rounded-3xl border transition-all duration-500 hover:scale-[1.02] relative ${solution.popular
+                            <div className={`h-full flex flex-col items-center text-center p-8 rounded-3xl border transition-all duration-500 hover:scale-[1.02] relative ${solution.popular
                                     ? 'bg-card/80 backdrop-blur-xl border-primary/50 shadow-2xl shadow-primary/20'
                                     : 'bg-card/50 backdrop-blur-sm border-border/50 card-glow'
                                 }`}>
@@ -93,10 +93,10 @@ export function Solutions() {
                                 <p className="text-muted-foreground text-sm leading-relaxed mb-8">{solution.copy}</p>
 
                                 {/* Features */}
-                                <div className="space-y-3 mb-8 flex-grow">
+                                <div className="space-y-3 mb-8 flex-grow w-full">
                                     {solution.features.map((feature, i) => (
-                                        <div key={i} className="flex items-center gap-3">
-                                            <div className={`w-5 h-5 rounded-full flex items-center justify-center ${solution.popular ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground'}`}>
+                                        <div key={i} className="flex items-center justify-center gap-3">
+                                            <div className={`w-5 h-5 rounded-full flex items-center justify-center shrink-0 ${solution.popular ? 'bg-primary/20 text-primary' : 'bg-muted text-muted-foreground'}`}>
                                                 <Check className="w-3 h-3" />
                                             </div>
                                             <span className="text-sm text-foreground">{feature}</span>

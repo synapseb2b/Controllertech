@@ -5,7 +5,7 @@ import { AlertTriangle, TrendingDown, EyeOff, DollarSign } from 'lucide-react';
 
 export function Problem() {
     return (
-        <section className="py-24 md:py-32 relative overflow-hidden">
+        <section className="py-20 md:py-28 relative overflow-hidden">
             {/* Background */}
             <div className="absolute inset-0 bg-gradient-to-b from-muted/10 via-transparent to-transparent" />
 
@@ -46,10 +46,10 @@ export function Problem() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 p-6 card-glow group hover:border-primary/30 transition-colors"
+                        transition={{ delay: 0.15 }}
+                        className="bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 p-6 card-glow group hover:border-primary/30 transition-all duration-300 text-center hover:shadow-lg hover:shadow-primary/5"
                     >
-                        <div className="p-3 bg-primary/10 text-primary rounded-xl w-fit mb-4 group-hover:bg-primary/20 transition-colors">
+                        <div className="p-3 bg-primary/10 text-primary rounded-xl w-fit mb-4 mx-auto group-hover:bg-primary/20 transition-colors">
                             <TrendingDown className="w-6 h-6" />
                         </div>
                         <h3 className="font-bold text-lg mb-2 text-foreground">Sangramento de Margem</h3>
@@ -60,10 +60,10 @@ export function Problem() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
-                        className="bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 p-6 card-glow group hover:border-primary/30 transition-colors"
+                        transition={{ delay: 0.23 }}
+                        className="bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 p-6 card-glow group hover:border-primary/30 transition-all duration-300 text-center hover:shadow-lg hover:shadow-primary/5"
                     >
-                        <div className="p-3 bg-muted text-muted-foreground rounded-xl w-fit mb-4 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                        <div className="p-3 bg-muted text-muted-foreground rounded-xl w-fit mb-4 mx-auto group-hover:bg-primary/10 group-hover:text-primary transition-colors">
                             <EyeOff className="w-6 h-6" />
                         </div>
                         <h3 className="font-bold text-lg mb-2 text-foreground">Decisão Solitária</h3>
@@ -74,10 +74,10 @@ export function Problem() {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.4 }}
-                        className="bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 p-6 card-glow group hover:border-primary/30 transition-colors"
+                        transition={{ delay: 0.31 }}
+                        className="bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 p-6 card-glow group hover:border-primary/30 transition-all duration-300 text-center hover:shadow-lg hover:shadow-primary/5"
                     >
-                        <div className="p-3 bg-muted text-muted-foreground rounded-xl w-fit mb-4 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+                        <div className="p-3 bg-muted text-muted-foreground rounded-xl w-fit mb-4 mx-auto group-hover:bg-primary/10 group-hover:text-primary transition-colors">
                             <DollarSign className="w-6 h-6" />
                         </div>
                         <h3 className="font-bold text-lg mb-2 text-foreground">Teto de Vidro</h3>

@@ -29,14 +29,14 @@ export function LogoMarquee() {
                     initial={{ x: 0 }}
                     animate={{ x: "-100%" }}
                     transition={{
-                        duration: 40,
+                        duration: 60,
                         repeat: Infinity,
                         ease: "linear",
                     }}
                     className="flex flex-shrink-0 gap-16 pr-16"
                 >
                     {[...logos, ...logos].map((logo, index) => (
-                        <div key={index} className="flex items-center gap-3 opacity-40 hover:opacity-80 transition-opacity duration-300">
+                        <div key={index} className="flex items-center gap-3 opacity-60 hover:opacity-90 transition-opacity duration-300">
                             <div className="h-10 w-10 rounded-xl bg-muted/50 border border-border/50 flex items-center justify-center text-sm font-bold text-muted-foreground">
                                 {logo.name.charAt(0)}
                             </div>
@@ -48,14 +48,14 @@ export function LogoMarquee() {
                     initial={{ x: 0 }}
                     animate={{ x: "-100%" }}
                     transition={{
-                        duration: 40,
+                        duration: 60,
                         repeat: Infinity,
                         ease: "linear",
                     }}
                     className="flex flex-shrink-0 gap-16 pr-16"
                 >
                     {[...logos, ...logos].map((logo, index) => (
-                        <div key={index} className="flex items-center gap-3 opacity-40 hover:opacity-80 transition-opacity duration-300">
+                        <div key={index} className="flex items-center gap-3 opacity-60 hover:opacity-90 transition-opacity duration-300">
                             <div className="h-10 w-10 rounded-xl bg-muted/50 border border-border/50 flex items-center justify-center text-sm font-bold text-muted-foreground">
                                 {logo.name.charAt(0)}
                             </div>

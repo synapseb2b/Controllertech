@@ -5,7 +5,7 @@ import { Quote } from 'lucide-react';
 
 export function Founder() {
     return (
-        <section className="py-24 md:py-32 relative overflow-hidden">
+        <section className="py-20 md:py-28 relative overflow-hidden">
             <div className="container mx-auto px-4 max-w-4xl text-center relative z-10">
                 {/* Quote Icon */}
                 <motion.div
@@ -14,7 +14,7 @@ export function Founder() {
                     viewport={{ once: true }}
                     className="mb-8 flex justify-center"
                 >
-                    <div className="p-4 rounded-2xl bg-primary/10 text-primary">
+                    <div className="p-4 rounded-2xl bg-primary/10 text-primary animate-pulse" style={{ animationDuration: '4s' }}>
                         <Quote className="w-10 h-10" />
                     </div>
                 </motion.div>

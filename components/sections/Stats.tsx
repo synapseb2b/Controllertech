@@ -40,7 +40,7 @@ function CountUp({ target, prefix, suffix }: { target: number; prefix: string; s
 
 export function Stats() {
     return (
-        <section id="stats" className="py-24 relative overflow-hidden bg-muted/5">
+        <section id="stats" className="py-20 md:py-28 relative overflow-hidden bg-muted/5">
             {/* Background */}
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent" />
 
@@ -66,7 +66,7 @@ export function Stats() {
                             className="relative group"
                         >
                             <div className="bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 p-8 text-center card-glow transition-all duration-300 hover:scale-[1.02]">
-                                <div className="text-5xl md:text-6xl font-extrabold tracking-tighter text-foreground mb-3">
+                                <div className="text-5xl md:text-6xl font-extrabold tracking-tighter text-gradient mb-3">
                                     <CountUp target={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                                 </div>
                                 <div className="text-sm font-bold text-primary uppercase tracking-wide mb-2">

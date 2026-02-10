@@ -2,11 +2,15 @@
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Menu } from 'lucide-react';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
 export function Navbar() {
+    const { scrollY } = useScroll();
+    const bgOpacity = useTransform(scrollY, [0, 200], [0.6, 0.95]);
+    const borderOpacity = useTransform(scrollY, [0, 200], [0.5, 0.8]);
+
     return (
         <motion.header
             initial={{ y: -100, opacity: 0 }}
@@ -15,7 +19,13 @@ export function Navbar() {
             className="fixed top-0 left-0 right-0 z-50"
         >
             <div className="mx-4 mt-4">
-                <div className="container mx-auto flex items-center justify-between px-6 py-4 rounded-2xl bg-card/60 backdrop-blur-xl border border-border/50 shadow-lg shadow-black/10">
+                <motion.div
+                    style={{
+                        backgroundColor: useTransform(bgOpacity, (v) => `oklch(0.12 0.01 260 / ${v})`),
+                        borderColor: useTransform(borderOpacity, (v) => `oklch(0.3 0.01 260 / ${v})`),
+                    }}
+                    className="container mx-auto flex items-center justify-between px-6 py-4 rounded-2xl backdrop-blur-xl border shadow-lg shadow-black/10 transition-shadow"
+                >
                     <Link href="/" className="flex items-center gap-3 group">
                         <div className="h-9 w-9 rounded-xl bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center shadow-lg shadow-primary/30 group-hover:shadow-primary/50 transition-shadow">
                             <div className="h-4 w-4 rounded-sm bg-white/90" />
@@ -58,7 +68,7 @@ export function Navbar() {
                             </div>
                         </SheetContent>
                     </Sheet>
-                </div>
+                </motion.div>
             </div>
         </motion.header>
     );

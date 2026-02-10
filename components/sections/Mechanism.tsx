@@ -23,7 +23,7 @@ const pillars = [
 
 export function Mechanism() {
     return (
-        <section id="mechanism" className="py-24 md:py-32 relative overflow-hidden bg-muted/5">
+        <section id="mechanism" className="py-20 md:py-28 relative overflow-hidden bg-muted/5">
             {/* Background */}
             <div className="absolute inset-0 bg-grid opacity-20" />
 
@@ -48,12 +48,12 @@ export function Mechanism() {
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.15 }}
+                            transition={{ delay: index * 0.1 }}
                             className="group relative"
                         >
-                            <div className="h-full bg-card/60 backdrop-blur-xl rounded-3xl border border-border/50 p-8 card-glow transition-all duration-500 hover:scale-[1.02] relative overflow-hidden">
+                            <div className="h-full bg-card/60 backdrop-blur-xl rounded-3xl border border-border/50 p-8 card-glow transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/5 relative overflow-hidden text-center">
                                 {/* Icon */}
-                                <div className="mb-8 p-4 rounded-2xl w-fit bg-primary/15">
+                                <div className="mb-8 p-4 rounded-2xl w-fit mx-auto bg-primary/15">
                                     <pillar.icon className="w-8 h-8 text-primary" />
                                 </div>
 

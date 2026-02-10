@@ -41,7 +41,7 @@ const faqs = [
 
 export function FAQ() {
     return (
-        <section id="faq" aria-label="Perguntas frequentes" className="py-24 md:py-32">
+        <section id="faq" aria-label="Perguntas frequentes" className="py-20 md:py-28">
             <div className="container mx-auto px-4 max-w-3xl">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
@@ -60,7 +60,7 @@ export function FAQ() {
                             initial={{ opacity: 0, y: 10 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1 }}
+                            transition={{ delay: index * 0.08 }}
                         >
                             <AccordionItem value={`item-${index}`} className="border-none">
                                 <div className="bg-card/50 backdrop-blur-sm rounded-2xl border border-border/50 px-6 card-glow transition-all hover:border-primary/30">
