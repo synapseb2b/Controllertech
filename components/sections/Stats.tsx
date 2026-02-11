@@ -12,8 +12,8 @@ const stats = [
 
 function CountUp({ target, prefix, suffix }: { target: number; prefix: string; suffix: string }) {
     const [count, setCount] = useState(0);
-    const ref = useRef<HTMLSpanElement>(null);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const ref = useRef<HTMLDivElement>(null);
+    const isInView = useInView(ref, { once: true, amount: 0.1 });
 
     useEffect(() => {
         if (!isInView) return;
@@ -35,7 +35,7 @@ function CountUp({ target, prefix, suffix }: { target: number; prefix: string; s
         return () => clearInterval(timer);
     }, [isInView, target]);
 
-    return <span ref={ref}>{prefix}{count}{suffix}</span>;
+    return <div ref={ref}>{prefix}{count}{suffix}</div>;
 }
 
 export function Stats() {

@@ -21,7 +21,7 @@ export function LogoMarquee() {
             <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-background to-transparent z-10" />
 
             <div className="text-center mb-8">
-                <p className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Empresas que confiam na ControllerTech</p>
+                <p className="text-sm text-muted-foreground uppercase tracking-wider font-medium">Empresas que confiam na{' '}<br className="md:hidden" />ControllerTech</p>
             </div>
 
             <div className="flex">

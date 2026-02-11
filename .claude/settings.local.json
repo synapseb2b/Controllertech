@@ -4,7 +4,8 @@
       "Bash(npm run build:*)",
       "Bash(dir \"C:\\\\Users\\\\Cliente\\\\Documents\\\\GitHub\\\\clientes\\\\Controllertech\")",
       "Bash(dir \"C:\\\\Users\\\\Cliente\\\\Documents\\\\GitHub\\\\clientes\\\\Controllertech\\\\public\")",
-      "Bash(dir:*)"
+      "Bash(dir:*)",
+      "Bash(npx next build:*)"
     ]
   }
 }

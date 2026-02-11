@@ -35,8 +35,8 @@ export function Mechanism() {
                     className="text-center max-w-3xl mx-auto mb-20"
                 >
                     <span className="text-sm font-bold text-primary uppercase tracking-wider">Como Funciona</span>
-                    <h2 className="text-4xl md:text-5xl font-extrabold mt-4 mb-6 tracking-tight">
-                        A <span className="text-gradient">Tecnologia</span> Processa. Os Especialistas Gerenciam. Você Lucra.
+                    <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold mt-4 mb-6 tracking-tight">
+                        Você para de <span className="text-gradient">operar o financeiro</span>. E passa a <span className="text-gradient">usar os números para crescer</span>.
                     </h2>
                 </motion.div>
 
