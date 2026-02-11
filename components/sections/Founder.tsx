@@ -5,7 +5,8 @@ import { Quote } from 'lucide-react';
 
 export function Founder() {
     return (
-        <section className="py-20 md:py-28 relative overflow-hidden">
+        <section className="py-20 md:py-28 relative overflow-hidden bg-muted/5">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/3 to-transparent" />
             <div className="container mx-auto px-4 max-w-4xl text-center relative z-10">
                 {/* Quote Icon */}
                 <motion.div

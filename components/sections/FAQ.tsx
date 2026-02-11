@@ -41,8 +41,9 @@ const faqs = [
 
 export function FAQ() {
     return (
-        <section id="faq" aria-label="Perguntas frequentes" className="py-20 md:py-28">
-            <div className="container mx-auto px-4 max-w-3xl">
+        <section id="faq" aria-label="Perguntas frequentes" className="py-20 md:py-28 relative overflow-hidden bg-muted/5">
+            <div className="absolute inset-0 bg-grid opacity-15" />
+            <div className="container mx-auto px-4 max-w-3xl relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}

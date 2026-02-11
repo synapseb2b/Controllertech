@@ -43,8 +43,9 @@ const solutions = [
 
 export function Solutions() {
     return (
-        <section id="solutions" className="py-20 md:py-28 relative overflow-hidden">
-            <div className="container mx-auto px-4">
+        <section id="solutions" className="py-20 md:py-28 relative overflow-hidden bg-muted/5">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-chart-4/5 to-transparent" />
+            <div className="container mx-auto px-4 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
