@@ -21,7 +21,8 @@ export function Problem() {
                         <span>O que está travando seu crescimento</span>
                     </span>
                     <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-8 leading-tight">
-                        <span className="text-gradient">Ter alguém</span> no financeiro — ou <span className="text-gradient">fazer você mesmo</span> — <br className="hidden md:block" />
+                        <span className="text-gradient">Ter alguém</span> no financeiro<br className="hidden md:block" />
+                        — ou <span className="text-gradient">fazer você mesmo</span> —<br className="hidden md:block" />
                         <span className="text-gradient">não é</span> ter gestão financeira.
                     </h2>
                 </motion.div>
