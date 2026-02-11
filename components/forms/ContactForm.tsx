@@ -1,10 +1,9 @@
 'use client';
 
-import { useActionState } from 'react';
+import { useActionState, useEffect } from 'react';
 import { submitContactForm } from '@/app/actions/contact';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import {
     Select,
@@ -13,17 +12,28 @@ import {
     SelectTrigger,
     SelectValue,
 } from "@/components/ui/select"
-import { Loader2, Send, ArrowRight } from 'lucide-react';
+import { Loader2, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 const initialState = {
     message: '',
     success: false,
-    errors: undefined
+    errors: undefined,
+    waRedirectUrl: undefined,
 };
 
 export function ContactForm() {
     const [state, action, isPending] = useActionState(submitContactForm, initialState);
+
+    // Redirect to WhatsApp after successful submission
+    useEffect(() => {
+        if (state.success && state.waRedirectUrl) {
+            const timer = setTimeout(() => {
+                window.open(state.waRedirectUrl, '_blank', 'noopener,noreferrer');
+            }, 1000);
+            return () => clearTimeout(timer);
+        }
+    }, [state.success, state.waRedirectUrl]);
 
     return (
         <div className="w-full max-w-xl mx-auto">
@@ -43,11 +53,12 @@ export function ContactForm() {
                             Quer saber quanto está <span className="text-gradient">perdendo</span> hoje?
                         </h3>
                         <p className="text-muted-foreground">
-                            Agende sua anamnese financeira gratuita. Em 30 minutos, mostramos onde está o sangramento — e como estancá-lo. Sem compromisso.
+                            Responda 6 perguntas rápidas. Em 30 minutos, mostramos onde está o sangramento — e como estancá-lo.
                         </p>
                     </div>
 
                     <form action={action} className="space-y-5">
+                        {/* Row 1: Nome + Empresa */}
                         <div className="grid grid-cols-2 gap-4">
                             <div className="space-y-2">
                                 <Label htmlFor="name" className="text-sm font-medium">Nome</Label>
@@ -59,34 +70,67 @@ export function ContactForm() {
                             </div>
                         </div>
 
+                        {/* Row 2: Setor */}
                         <div className="space-y-2">
-                            <Label htmlFor="email" className="text-sm font-medium">Email Corporativo</Label>
-                            <Input id="email" name="email" type="email" placeholder="voce@empresa.com.br" required className="h-12 bg-muted/30 border-border/50 rounded-xl" />
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="revenue" className="text-sm font-medium">Faturamento Mensal</Label>
-                            <Select name="revenue" required>
+                            <Label htmlFor="sector" className="text-sm font-medium">Setor</Label>
+                            <Select name="sector" required>
                                 <SelectTrigger className="h-12 bg-muted/30 border-border/50 rounded-xl">
-                                    <SelectValue placeholder="Selecione um intervalo" />
+                                    <SelectValue placeholder="Selecione seu setor" />
                                 </SelectTrigger>
                                 <SelectContent className="bg-card border-border/50">
-                                    <SelectItem value="ate_175k">Até R$ 175k</SelectItem>
-                                    <SelectItem value="175k_500k">R$ 175k - R$ 500k</SelectItem>
-                                    <SelectItem value="500k_2mm">R$ 500k - R$ 2MM</SelectItem>
-                                    <SelectItem value="acima_2mm">Acima de R$ 2MM</SelectItem>
+                                    <SelectItem value="saude">{"Saúde (Clínica/Consultório)"}</SelectItem>
+                                    <SelectItem value="juridico">{"Jurídico (Escritório de Advocacia)"}</SelectItem>
+                                    <SelectItem value="agencia">{"Agência (Marketing/Comunicação)"}</SelectItem>
+                                    <SelectItem value="arquitetura">Arquitetura/Engenharia</SelectItem>
+                                    <SelectItem value="tecnologia">Tecnologia (SaaS/Software)</SelectItem>
+                                    <SelectItem value="outro">Outro</SelectItem>
                                 </SelectContent>
                             </Select>
                         </div>
 
+                        {/* Row 3: Faturamento */}
                         <div className="space-y-2">
-                            <Label htmlFor="challenge" className="text-sm font-medium">Qual seu maior desafio financeiro hoje?</Label>
-                            <Textarea
-                                id="challenge"
-                                name="message"
-                                placeholder="Ex: Vendo bem mas o caixa continua sem saldo / Não sei quanto sobra para eu retirar"
-                                className="min-h-[100px] bg-muted/30 border-border/50 rounded-xl resize-none"
+                            <Label htmlFor="revenue" className="text-sm font-medium">Faturamento Mensal</Label>
+                            <Select name="revenue" required>
+                                <SelectTrigger className="h-12 bg-muted/30 border-border/50 rounded-xl">
+                                    <SelectValue placeholder="Selecione a faixa" />
+                                </SelectTrigger>
+                                <SelectContent className="bg-card border-border/50">
+                                    <SelectItem value="ate_150k">{"Até R$ 150k"}</SelectItem>
+                                    <SelectItem value="150k_500k">{"R$ 150k – R$ 500k"}</SelectItem>
+                                    <SelectItem value="500k_2mm">{"R$ 500k – R$ 2MM"}</SelectItem>
+                                    <SelectItem value="acima_2mm">{"Acima de R$ 2MM"}</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+
+                        {/* Row 4: Dor principal */}
+                        <div className="space-y-2">
+                            <Label htmlFor="pain" className="text-sm font-medium">{"Qual é a sua maior dor hoje?"}</Label>
+                            <Select name="pain" required>
+                                <SelectTrigger className="h-12 bg-muted/30 border-border/50 rounded-xl">
+                                    <SelectValue placeholder={"Selecione a opção que mais se aplica"} />
+                                </SelectTrigger>
+                                <SelectContent className="bg-card border-border/50">
+                                    <SelectItem value="lucro_invisivel">{"Não sei quanto sobra de lucro real no fim do mês"}</SelectItem>
+                                    <SelectItem value="caixa_apertado">{"Vendo bem, mas o caixa vive apertado"}</SelectItem>
+                                    <SelectItem value="sem_tempo">{"Faço tudo sozinho e não tenho tempo"}</SelectItem>
+                                    <SelectItem value="equipe_fraca">{"Meu financeiro é feito por alguém sem preparo"}</SelectItem>
+                                    <SelectItem value="preciso_estrategia">{"Preciso de estratégia, não só de operação"}</SelectItem>
+                                </SelectContent>
+                            </Select>
+                        </div>
+
+                        {/* Row 5: WhatsApp */}
+                        <div className="space-y-2">
+                            <Label htmlFor="phone" className="text-sm font-medium">WhatsApp</Label>
+                            <Input
+                                id="phone"
+                                name="phone"
+                                type="tel"
+                                placeholder="(31) 99060-3750"
                                 required
+                                className="h-12 bg-muted/30 border-border/50 rounded-xl"
                             />
                         </div>
 
@@ -98,7 +142,7 @@ export function ContactForm() {
                                 </>
                             ) : (
                                 <>
-                                    Agendar Diagnóstico Gratuito <ArrowRight className="ml-2 h-5 w-5" />
+                                    {"Agendar Diagnóstico Gratuito"} <ArrowRight className="ml-2 h-5 w-5" />
                                 </>
                             )}
                         </Button>
@@ -114,7 +158,7 @@ export function ContactForm() {
                         )}
 
                         <p className="text-xs text-center text-muted-foreground pt-2">
-                            Sem compromisso. Sem pressão. Só clareza.
+                            {"Sem compromisso. Sem pressão. Só clareza."}
                         </p>
                     </form>
                 </div>

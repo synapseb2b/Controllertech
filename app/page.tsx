@@ -10,6 +10,7 @@ import { Founder } from '@/components/sections/Founder';
 import { FAQ } from '@/components/sections/FAQ';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { Footer } from '@/components/layout/Footer';
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
 
 const jsonLd = {
   organization: {
@@ -154,6 +155,7 @@ export default function Home() {
 
       <FAQ />
       <Footer />
+      <WhatsAppButton />
     </main>
   );
 }

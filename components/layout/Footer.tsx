@@ -39,7 +39,7 @@ export function Footer() {
                         <ul className="space-y-3 text-sm text-muted-foreground">
                             <li><Link href="#faq" className="hover:text-primary transition-colors">Dúvidas Frequentes</Link></li>
                             <li><Link href="#contact" className="hover:text-primary transition-colors">Fale Conosco</Link></li>
-                            <li><a href="#" className="hover:text-primary transition-colors">WhatsApp</a></li>
+                            <li><a href="https://wa.me/5531990603750?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20os%20servi%C3%A7os%20da%20ControllerTech." target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">WhatsApp</a></li>
                         </ul>
                     </div>
 

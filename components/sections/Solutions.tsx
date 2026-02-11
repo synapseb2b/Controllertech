@@ -7,12 +7,12 @@ import Link from 'next/link';
 
 const solutions = [
     {
-        tag: "Para quem está começando",
+        tag: "Primeiros Passos",
         name: "Kit de Organização",
-        headline: "O primeiro passo antes de escalar.",
-        copy: "Para empresários que sabem que o financeiro está bagunçado e querem dar o primeiro passo sem compromisso.",
-        features: ["Separação PF/PJ", "Fluxo de caixa básico", "Planilhas prontas"],
-        cta: "Conhecer o Kit",
+        headline: "Saia do caos financeiro com um plano claro.",
+        copy: "Você sabe que o financeiro está bagunçado, mas não sabe por onde começar. Organizamos a base para que você enxergue seus números pela primeira vez.",
+        features: ["Separação PF/PJ", "Fluxo de caixa estruturado", "Diagnóstico de margem oculta"],
+        cta: "Quero Organizar",
         href: "#contact",
         popular: false,
         gradient: "from-slate-500 to-slate-600"
@@ -20,9 +20,9 @@ const solutions = [
     {
         tag: "Recomendado",
         name: "Gestão Premium (BPO)",
-        headline: "Sua operação financeira no piloto automático — com um CFO Sênior no comando.",
-        copy: "Nós assumimos as rotinas: contas a pagar, receber, faturamento e conciliação. Você ganha tempo.",
-        features: ["Operação completa", "Relatórios mensais", "Suporte dedicado", "Olhar sênior", "Recuperação de margem oculta"],
+        headline: "Pare de operar o financeiro. Assuma o comando estratégico.",
+        copy: "Nós assumimos contas a pagar, receber, faturamento e conciliação. Você para de apagar incêndio e foca no que gera receita.",
+        features: ["Operação financeira completa", "Relatórios mensais de desempenho", "Analista financeiro dedicado", "Auditoria sênior contínua", "Recuperação de margem oculta"],
         cta: "Quero Terceirizar",
         href: "#contact",
         popular: true,
@@ -31,10 +31,10 @@ const solutions = [
     {
         tag: "Alta Performance",
         name: "CFO as a Service",
-        headline: "A estrutura de uma multinacional sem inflar sua folha.",
-        copy: "Para empresas que já possuem operação, mas carecem de liderança financeira estratégica.",
-        features: ["Estratégia de crescimento", "Precificação avançada", "Governança financeira", "Visão de Runway"],
-        cta: "Falar com Consultor",
+        headline: "A inteligência de um CFO sênior sem inflar sua folha.",
+        copy: "Sua empresa já tem operação, mas falta liderança financeira estratégica. Entregamos visão de Runway, precificação inteligente e governança para acelerar com segurança.",
+        features: ["Estratégia de crescimento e expansão", "Precificação e proteção de margem", "Governança financeira e compliance", "Projeção de Runway e distribuição de lucros"],
+        cta: "Falar com o CFO",
         href: "#contact",
         popular: false,
         gradient: "from-emerald-500 to-teal-500"
