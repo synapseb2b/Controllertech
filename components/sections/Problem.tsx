@@ -20,9 +20,9 @@ export function Problem() {
                         <AlertTriangle className="w-4 h-4" />
                         <span>O que está travando seu crescimento</span>
                     </span>
-                    <h2 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-8 leading-tight">
-                        Ter alguém no financeiro — ou fazer você mesmo — <br className="hidden md:block" />
-                        <span className="text-foreground/70">não é ter gestão financeira.</span>
+                    <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-8 leading-tight">
+                        <span className="text-gradient">Ter alguém</span> no financeiro — ou <span className="text-gradient">fazer você mesmo</span> — <br className="hidden md:block" />
+                        <span className="text-gradient">não é</span> ter gestão financeira.
                     </h2>
                 </motion.div>
 
