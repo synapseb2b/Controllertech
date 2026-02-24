@@ -11,6 +11,7 @@ import { FAQ } from '@/components/sections/FAQ';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { Footer } from '@/components/layout/Footer';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
+import { ProductQuiz } from '@/components/sections/ProductQuiz';
 
 const jsonLd = {
   organization: {
@@ -19,7 +20,7 @@ const jsonLd = {
     name: 'ControllerTech',
     url: 'https://controllertech.com.br',
     logo: 'https://controllertech.com.br/logo.png',
-    description: 'Arquitetura Financeira Inteligente para PMEs',
+    description: 'Gestão financeira inteligente para PMEs. CFO Sênior, BPO Financeiro e diagnóstico de margem oculta para empresas de serviço que faturam de R$ 150k a R$ 3MM/mês.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Rua Professor Moysés, 271 - Sala B',
@@ -34,7 +35,7 @@ const jsonLd = {
     name: 'ControllerTech',
     url: 'https://controllertech.com.br',
     description:
-      'Gestão financeira estratégica para PMEs. BPO Financeiro e CFO as a Service.',
+      'Gestão financeira estratégica para PMEs que faturam de R$ 150k a R$ 3MM/mês. BPO Financeiro, CFO as a Service e diagnóstico de margem oculta. Atendemos clínicas, escritórios de advocacia, agências e empresas de serviço.',
     address: {
       '@type': 'PostalAddress',
       streetAddress: 'Rua Professor Moysés, 271 - Sala B',
@@ -114,8 +115,65 @@ const jsonLd = {
           text: 'Perfeito — nós trabalhamos em sinergia com seu contador. A ControllerTech cuida da gestão financeira estratégica (fluxo de caixa, margem, precificação, projeções), enquanto o contador foca na parte fiscal e contábil. Na prática, facilitamos o trabalho dele entregando toda a documentação organizada e conciliada.',
         },
       },
+      {
+        '@type': 'Question',
+        name: 'Quanto custa terceirizar a gestão financeira da minha empresa?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'Na ControllerTech, os planos começam a partir de R$ 3-5k/mês — cerca de 1/3 do custo de um analista financeiro CLT júnior (R$ 8-10k com encargos). A diferença é que você não contrata uma pessoa: contrata um time multidisciplinar liderado por CFO Sênior, com tecnologia integrada e auditoria contínua. Solicite um diagnóstico gratuito para receber uma proposta personalizada.',
+        },
+      },
+      {
+        '@type': 'Question',
+        name: 'Preciso de gestão financeira para minha clínica ou escritório, por onde começo?',
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: 'O primeiro passo é o nosso Diagnóstico Financeiro Gratuito. Em 30 minutos, analisamos a saúde do seu caixa, identificamos vazamentos de margem e mostramos exatamente onde você está perdendo dinheiro. A partir daí, recomendamos o plano ideal — desde organização básica (Kit de Organização) até gestão completa (BPO Financeiro) ou estratégia de crescimento (CFO as a Service). Atendemos clínicas, escritórios de advocacia, agências e empresas de serviço.',
+        },
+      },
     ],
   },
+  services: [
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      provider: { '@type': 'Organization', name: 'ControllerTech' },
+      serviceType: 'Financial Management',
+      name: 'Kit de Organização Financeira',
+      description: 'Organização financeira básica para PMEs: separação PF/PJ, fluxo de caixa estruturado e diagnóstico de margem oculta. O primeiro passo para quem quer sair da bagunça financeira e enxergar seus números pela primeira vez.',
+      areaServed: { '@type': 'Country', name: 'Brasil' },
+      audience: {
+        '@type': 'BusinessAudience',
+        audienceType: 'PMEs de serviço que precisam organizar o financeiro básico',
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      provider: { '@type': 'Organization', name: 'ControllerTech' },
+      serviceType: 'Financial Management',
+      name: 'BPO Financeiro para PMEs — Gestão Premium',
+      description: 'Terceirização completa da operação financeira: contas a pagar, receber, faturamento, conciliação, relatórios mensais e analista dedicado. Para empresários que querem parar de operar o financeiro e focar no que gera receita.',
+      areaServed: { '@type': 'Country', name: 'Brasil' },
+      audience: {
+        '@type': 'BusinessAudience',
+        audienceType: 'PMEs de serviço com faturamento de R$ 150k a R$ 3MM/mês',
+      },
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      provider: { '@type': 'Organization', name: 'ControllerTech' },
+      serviceType: 'Financial Advisory',
+      name: 'CFO as a Service',
+      description: 'Liderança financeira estratégica sem inflar a folha: visão de Runway, precificação inteligente, governança e compliance, projeção de distribuição de lucros. Para empresas que já têm operação mas precisam de estratégia para crescer com segurança.',
+      areaServed: { '@type': 'Country', name: 'Brasil' },
+      audience: {
+        '@type': 'BusinessAudience',
+        audienceType: 'PMEs de serviço que faturam acima de R$ 500k/mês e precisam de liderança financeira estratégica',
+      },
+    },
+  ],
 };
 
 export default function Home() {
@@ -133,6 +191,13 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd.faq) }}
       />
+      {jsonLd.services.map((service, i) => (
+        <script
+          key={`service-${i}`}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(service) }}
+        />
+      ))}
       <Navbar />
       <Hero />
       <LogoMarquee />
@@ -142,6 +207,7 @@ export default function Home() {
       <Problem />
       <Mechanism />
       <Solutions />
+      <ProductQuiz />
       <Benefits />
       <Founder />
 

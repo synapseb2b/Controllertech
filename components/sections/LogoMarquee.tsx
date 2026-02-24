@@ -7,6 +7,11 @@ const logos = [
     { name: 'Giornata Educação' },
     { name: 'Sucesso Select' },
     { name: 'CTST' },
+    { name: 'Dorneles Advocacia' },
+    { name: 'Meu Pet Livre' },
+    { name: 'Guillermo Alfaitaria' },
+    { name: 'J7 Rural' },
+    { name: 'Império das Relíquias' },
 ];
 
 export function LogoMarquee() {

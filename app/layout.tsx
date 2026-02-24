@@ -15,17 +15,21 @@ export const metadata: Metadata = {
     template: '%s | ControllerTech',
   },
   description:
-    'Tenha um CFO Sênior na sua empresa por uma fração do custo. Blindamos seu caixa, projetamos seu futuro e aumentamos seu lucro real. Sem CLT, sem passivo, sem surpresas.',
+    'Você vende bem mas não sabe quanto sobra? A ControllerTech entrega gestão financeira sênior para PMEs — blindamos seu caixa, recuperamos margem oculta e projetamos seu futuro. Sem CLT, sem passivo.',
   keywords: [
-    'gestão financeira',
+    'gestão financeira para PME',
     'BPO financeiro',
     'CFO as a Service',
     'terceirização financeira',
-    'controladoria',
-    'PME',
-    'fluxo de caixa',
-    'consultoria financeira',
-    'Sete Lagoas',
+    'não sei para onde meu dinheiro vai',
+    'vendo bem mas não sobra nada',
+    'quanto posso retirar da empresa',
+    'gestão financeira para clínica',
+    'CFO para escritório de advocacia',
+    'gestão financeira para agência',
+    'fluxo de caixa PME',
+    'consultoria financeira Sete Lagoas',
+    'controller financeiro terceirizado',
   ],
   authors: [{ name: 'ControllerTech' }],
   creator: 'ControllerTech',
@@ -37,7 +41,7 @@ export const metadata: Metadata = {
     siteName: 'ControllerTech',
     title: 'ControllerTech | Gestão Financeira Inteligente para PMEs',
     description:
-      'Acesse inteligência financeira sênior para blindar seu caixa e aumentar seu lucro real.',
+      'Vende bem mas o caixa vive apertado? Um CFO Sênior por 1/3 do custo de um CLT. Diagnóstico gratuito.',
     images: [
       {
         url: '/og-image.png',
@@ -51,7 +55,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'ControllerTech | Gestão Financeira Inteligente para PMEs',
     description:
-      'CFO Sênior por uma fração do custo. Blindamos seu caixa e aumentamos seu lucro.',
+      'Vende bem mas não sobra nada? Gestão financeira sênior para PMEs por 1/3 do custo de um CLT.',
     images: ['/og-image.png'],
   },
   alternates: {
