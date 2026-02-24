@@ -52,10 +52,19 @@ export function Hero() {
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
-                            className="text-lg md:text-xl text-muted-foreground mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed"
+                            className="text-lg md:text-xl text-muted-foreground mb-6 max-w-xl mx-auto lg:mx-0 leading-relaxed"
                         >
                             Acesse inteligência financeira sênior para blindar seu caixa, projetar seu
                             futuro e aumentar seu lucro real. Sem CLT, sem passivo, sem surpresas.
+                        </motion.p>
+
+                        <motion.p
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: 0.25 }}
+                            className="text-sm text-muted-foreground/80 mb-10 max-w-xl mx-auto lg:mx-0 leading-relaxed border-l-2 border-primary/40 pl-4"
+                        >
+                            Liderado por <span className="text-foreground font-semibold">Ciro Freitas</span> — 23 anos em controladoria e gestão financeira, ex-Marelli e Infosys/Philips LATAM. Do chão de fábrica financeiro ao comando estratégico de PMEs.
                         </motion.p>
 
                         <motion.div
@@ -124,7 +133,7 @@ export function Hero() {
                             </div>
 
                             {/* Floating Badge */}
-                            <div className="absolute -top-4 -right-4 bg-card/90 backdrop-blur-xl rounded-2xl border border-border/50 px-4 py-3 shadow-xl card-glow">
+                            <div className="absolute top-4 right-4 bg-card/90 backdrop-blur-xl rounded-2xl border border-border/50 px-4 py-3 shadow-xl card-glow">
                                 <p className="text-xs text-muted-foreground">Economia</p>
                                 <p className="text-lg font-bold text-green-400">R$ 47.2k/mês</p>
                             </div>

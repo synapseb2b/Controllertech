@@ -3,14 +3,10 @@
 import { motion } from 'framer-motion';
 
 const logos = [
-    { name: 'Acme Corp' },
-    { name: 'Quantum' },
-    { name: 'Echo Valley' },
-    { name: 'Pulse' },
-    { name: 'Apex' },
-    { name: 'Horizon' },
-    { name: 'Nova' },
-    { name: 'Synapse' },
+    { name: 'Giornata Empresas' },
+    { name: 'Giornata Educação' },
+    { name: 'Sucesso Select' },
+    { name: 'CTST' },
 ];
 
 export function LogoMarquee() {

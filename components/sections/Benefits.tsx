@@ -81,7 +81,7 @@ export function Benefits() {
                     </motion.div>
 
                     {/* Benefits Grid — Centered cards */}
-                    <div className="grid md:grid-cols-3 gap-8">
+                    <div className="grid md:grid-cols-3 gap-6">
                         {benefits.map((benefit, index) => (
                             <motion.div
                                 key={index}
@@ -89,13 +89,15 @@ export function Benefits() {
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
                                 transition={{ delay: index * 0.08 }}
-                                className="text-center group"
+                                className="group"
                             >
-                                <div className="p-3 rounded-2xl bg-primary/15 w-fit mx-auto mb-4 group-hover:scale-110 transition-transform">
-                                    <benefit.icon className="w-6 h-6 text-primary" />
+                                <div className="h-full bg-card/60 backdrop-blur-xl rounded-3xl border border-border/50 p-8 card-glow transition-all duration-500 hover:scale-[1.02] hover:shadow-lg hover:shadow-primary/5 text-center">
+                                    <div className="p-3 rounded-2xl bg-primary/15 w-fit mx-auto mb-4 group-hover:scale-110 transition-transform">
+                                        <benefit.icon className="w-6 h-6 text-primary" />
+                                    </div>
+                                    <h3 className="text-xl font-bold mb-2 text-foreground">{benefit.title}</h3>
+                                    <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
                                 </div>
-                                <h3 className="text-xl font-bold mb-2 text-foreground">{benefit.title}</h3>
-                                <p className="text-muted-foreground leading-relaxed">{benefit.description}</p>
                             </motion.div>
                         ))}
                     </div>

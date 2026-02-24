@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
+import Image from 'next/image';
 
 export function Founder() {
     return (
@@ -37,9 +38,11 @@ export function Founder() {
                     transition={{ delay: 0.1 }}
                     className="text-xl md:text-2xl text-muted-foreground leading-relaxed mb-12"
                 >
-                    &quot;A ControllerTech não é uma plataforma de robôs. Somos uma consultoria boutique.
-                    Eu criei a empresa porque, em 23 anos no mercado financeiro, vi empresas que vendem muito quebrarem por não saberem para onde o dinheiro vai.
-                    Nossa missão é traduzir o caos financeiro em um <span className="text-foreground font-semibold">plano de voo claro</span> — para que você acelere com segurança.&quot;
+                    &quot;Comecei minha carreira em 2003, fazendo conciliação bancária e acerto com motoristas de entrega.
+                    Passei por controladoria em multinacionais como a Marelli — onde liderei budgeting, forecasting e análise de P&amp;L — e pela Infosys, estruturando operações financeiras da Philips para toda a América Latina.
+                    Em 23 anos, aprendi uma coisa: a diferença entre uma empresa que cresce e uma que quebra não está nas vendas.
+                    {' '}<span className="text-foreground font-semibold">Está na gestão do caixa.</span>{' '}
+                    Criei a ControllerTech para entregar às PMEs a mesma inteligência financeira que só multinacionais tinham acesso — sem a burocracia, sem o custo e sem a distância de uma grande consultoria.&quot;
                 </motion.blockquote>
 
                 <motion.div
@@ -49,16 +52,20 @@ export function Founder() {
                     transition={{ delay: 0.2 }}
                     className="flex flex-col items-center"
                 >
-                    {/* Photo Placeholder */}
+                    {/* Photo */}
                     <div className="w-20 h-20 rounded-full bg-gradient-to-br from-primary to-chart-4 p-0.5 mb-4 shadow-lg shadow-primary/30">
-                        <div className="w-full h-full rounded-full bg-card flex items-center justify-center text-2xl font-bold text-primary">
-                            C
-                        </div>
+                        <Image
+                            src="/Ciro1.webp"
+                            alt="Ciro Freitas"
+                            width={80}
+                            height={80}
+                            className="w-full h-full rounded-full object-cover"
+                        />
                     </div>
 
                     <cite className="not-italic">
-                        <div className="font-bold text-lg text-foreground">Ciro [Sobrenome]</div>
-                        <div className="text-sm font-medium text-primary uppercase tracking-wider">Fundador & Head de Estratégia</div>
+                        <div className="font-bold text-lg text-foreground">Ciro Freitas</div>
+                        <div className="text-sm font-medium text-primary uppercase tracking-wider">Fundador &amp; Head de Estratégia</div>
                     </cite>
                 </motion.div>
             </div>

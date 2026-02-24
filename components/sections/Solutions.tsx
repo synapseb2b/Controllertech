@@ -9,8 +9,8 @@ const solutions = [
     {
         tag: "Primeiros Passos",
         name: "Kit de Organização",
-        headline: "Saia do caos financeiro com um plano claro.",
-        copy: "Você sabe que o financeiro está bagunçado, mas não sabe por onde começar. Organizamos a base para que você enxergue seus números pela primeira vez.",
+        headline: "O primeiro passo antes de escalar.",
+        copy: "Para empresários que sabem que o financeiro está bagunçado e querem dar o primeiro passo sem compromisso. Organizamos a base para que você enxergue seus números pela primeira vez.",
         features: ["Separação PF/PJ", "Fluxo de caixa estruturado", "Diagnóstico de margem oculta"],
         cta: "Quero Organizar",
         href: "#contact",
@@ -65,7 +65,7 @@ export function Solutions() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className={`relative group ${solution.popular ? 'lg:-translate-y-4 pt-4' : ''}`}
+                            className="relative group"
                         >
                             <div className={`h-full flex flex-col items-center text-center p-8 rounded-3xl border transition-all duration-500 hover:scale-[1.02] relative ${solution.popular
                                     ? 'bg-card/80 backdrop-blur-xl border-primary/50 shadow-2xl shadow-primary/20'
