@@ -184,3 +184,74 @@
     background-size: 60px 60px;
   }
 }
+
+/* ========================================
+   Blog Article Prose Styles
+   ======================================== */
+.prose-blog {
+  line-height: 1.8;
+  color: oklch(0.80 0 0);
+  font-size: 1.0625rem;
+}
+
+.prose-blog h2 {
+  color: oklch(0.95 0 0);
+  font-size: 1.75rem;
+  font-weight: 800;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.prose-blog h3 {
+  color: oklch(0.90 0 0);
+  font-size: 1.375rem;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+}
+
+.prose-blog p {
+  margin-bottom: 1.25rem;
+}
+
+.prose-blog strong {
+  color: oklch(0.95 0 0);
+  font-weight: 700;
+}
+
+.prose-blog a {
+  color: oklch(0.65 0.2 265);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.prose-blog a:hover {
+  color: oklch(0.75 0.2 265);
+}
+
+.prose-blog ul,
+.prose-blog ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.prose-blog li {
+  margin-bottom: 0.5rem;
+}
+
+.prose-blog blockquote {
+  border-left: 3px solid oklch(0.65 0.2 265);
+  padding-left: 1.25rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: oklch(0.75 0 0);
+}
+
+.prose-blog hr {
+  border: none;
+  height: 1px;
+  background: oklch(0.25 0.01 260);
+  margin: 2rem 0;
+}

@@ -9,7 +9,10 @@
       "Bash(timeout 10 tail:*)",
       "Bash(npx next dev:*)",
       "Bash(find:*)",
-      "Bash(git -C \"C:\\\\Users\\\\Cliente\\\\Documents\\\\GitHub\\\\clientes\\\\Controllertech\" log --oneline -10)"
+      "Bash(git -C \"C:\\\\Users\\\\Cliente\\\\Documents\\\\GitHub\\\\clientes\\\\Controllertech\" log --oneline -10)",
+      "Bash(python:*)",
+      "Bash(pip install:*)",
+      "Bash(npm install:*)"
     ]
   }
 }

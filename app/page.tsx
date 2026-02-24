@@ -28,6 +28,13 @@ const jsonLd = {
       addressRegion: 'MG',
       addressCountry: 'BR',
     },
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+55-31-99060-3750',
+      contactType: 'customer service',
+      availableLanguage: 'Portuguese',
+      areaServed: 'BR',
+    },
   },
   localBusiness: {
     '@context': 'https://schema.org',
@@ -54,6 +61,13 @@ const jsonLd = {
       name: 'Brasil',
     },
     priceRange: '$$',
+    contactPoint: {
+      '@type': 'ContactPoint',
+      telephone: '+55-31-99060-3750',
+      contactType: 'customer service',
+      availableLanguage: 'Portuguese',
+      areaServed: 'BR',
+    },
   },
   faq: {
     '@context': 'https://schema.org',

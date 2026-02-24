@@ -40,6 +40,7 @@ export function Navbar() {
                         <Link href="#solutions" className="hover:text-foreground transition-colors">Soluções</Link>
                         <Link href="#stats" className="hover:text-foreground transition-colors">Resultados</Link>
                         <Link href="#faq" className="hover:text-foreground transition-colors">FAQ</Link>
+                        <Link href="/blog" className="hover:text-foreground transition-colors">Blog</Link>
                     </nav>
 
                     <div className="hidden md:flex items-center gap-4">
@@ -61,6 +62,7 @@ export function Navbar() {
                                 <Link href="#solutions" className="text-lg font-medium hover:text-primary transition-colors">Soluções</Link>
                                 <Link href="#stats" className="text-lg font-medium hover:text-primary transition-colors">Resultados</Link>
                                 <Link href="#faq" className="text-lg font-medium hover:text-primary transition-colors">FAQ</Link>
+                                <Link href="/blog" className="text-lg font-medium hover:text-primary transition-colors">Blog</Link>
                                 <div className="h-px bg-border my-4" />
                                 <Button className="w-full rounded-full" asChild>
                                     <Link href="#contact">Diagnóstico Gratuito</Link>
