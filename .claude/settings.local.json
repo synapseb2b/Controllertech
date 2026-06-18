@@ -12,7 +12,9 @@
       "Bash(git -C \"C:\\\\Users\\\\Cliente\\\\Documents\\\\GitHub\\\\clientes\\\\Controllertech\" log --oneline -10)",
       "Bash(python:*)",
       "Bash(pip install:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(grep -E \"\\\\.\\(ts|tsx|js\\)$\")",
+      "WebFetch(domain:www.controllertech.com.br)"
     ]
   }
 }
