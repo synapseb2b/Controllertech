@@ -56,10 +56,13 @@ export function Footer() {
 
                 {/* Bottom */}
                 <div className="pt-8 border-t border-border/50 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-muted-foreground">
-                    <p>&copy; {new Date().getFullYear()} ControllerTech. Todos os direitos reservados.</p>
+                    <div className="text-center md:text-left">
+                        <p>&copy; {new Date().getFullYear()} ControllerTech. Todos os direitos reservados.</p>
+                        <p className="mt-1">Desenvolvido por <a href="https://synapseb2b.com" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">Synapse B2B</a> | Plataformas Digitais arquitetadas em Engenharia de Receita.</p>
+                    </div>
                     <div className="flex gap-6">
-                        <Link href="#" className="hover:text-foreground transition-colors">Política de Privacidade</Link>
-                        <Link href="#" className="hover:text-foreground transition-colors">Termos de Uso</Link>
+                        <Link href="/politica-de-privacidade" className="hover:text-foreground transition-colors">Política de Privacidade</Link>
+                        <Link href="/termos-de-uso" className="hover:text-foreground transition-colors">Termos de Uso</Link>
                     </div>
                 </div>
             </div>

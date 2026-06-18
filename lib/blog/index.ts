@@ -51,6 +51,8 @@ export async function getPostMeta(slug: string): Promise<BlogPostMeta | null> {
         updatedAt: data.updatedAt,
         ctaText: data.ctaText || '',
         ctaProduct: data.ctaProduct || '',
+        faq: data.faq,
+        howTo: data.howTo,
     };
 }
 
@@ -76,6 +78,8 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | null> {
         updatedAt: data.updatedAt,
         ctaText: data.ctaText || '',
         ctaProduct: data.ctaProduct || '',
+        faq: data.faq,
+        howTo: data.howTo,
         content,
         htmlContent,
     };
