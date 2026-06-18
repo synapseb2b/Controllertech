@@ -8,11 +8,21 @@ import { Button } from '@/components/ui/button';
 import { getAllPostSlugs, getPostBySlug, getAllPosts } from '@/lib/blog';
 import { ArticleContent } from '@/components/blog/ArticleContent';
 import { ArticleHeader } from '@/components/blog/ArticleHeader';
+import { BoloCalculator } from '@/components/blog/interactive/BoloCalculator';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface PageProps {
     params: Promise<{ slug: string }>;
 }
+
+/**
+ * Componentes interativos injetados em artigos específicos por slug.
+ * Mantém o pipeline de markdown intacto (ver ArticleContent) e ainda
+ * permite ferramentas interativas (ex.: calculadora migrada do site antigo).
+ */
+const INTERACTIVE: Record<string, React.ComponentType> = {
+    'tabela-de-precificacao-de-bolo': BoloCalculator,
+};
 
 export async function generateStaticParams() {
     const slugs = await getAllPostSlugs();
@@ -117,6 +127,29 @@ export default async function BlogArticlePage({ params }: PageProps) {
         ],
     };
 
+    const howToJsonLd = post.howTo && {
+        '@context': 'https://schema.org',
+        '@type': 'HowTo',
+        name: post.howTo.name,
+        description: post.howTo.description,
+        step: post.howTo.steps.map((s, i) => ({
+            '@type': 'HowToStep',
+            position: i + 1,
+            name: s.name,
+            text: s.text,
+        })),
+    };
+
+    const faqJsonLd = post.faq && post.faq.length > 0 && {
+        '@context': 'https://schema.org',
+        '@type': 'FAQPage',
+        mainEntity: post.faq.map((f) => ({
+            '@type': 'Question',
+            name: f.question,
+            acceptedAnswer: { '@type': 'Answer', text: f.answer },
+        })),
+    };
+
     const whatsAppMessage = encodeURIComponent(
         `Olá! Li o artigo "${post.title}" no blog da ControllerTech e gostaria de agendar um diagnóstico financeiro gratuito.`
     );
@@ -131,6 +164,18 @@ export default async function BlogArticlePage({ params }: PageProps) {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
             />
+            {howToJsonLd && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+                />
+            )}
+            {faqJsonLd && (
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+                />
+            )}
             <Navbar />
 
             <article className="relative pt-32 pb-20 md:pt-40 md:pb-28">
@@ -151,6 +196,10 @@ export default async function BlogArticlePage({ params }: PageProps) {
                         </nav>
 
                         <ArticleHeader post={post} />
+                        {(() => {
+                            const Interactive = INTERACTIVE[slug];
+                            return Interactive ? <Interactive /> : null;
+                        })()}
                         <ArticleContent htmlContent={post.htmlContent} />
 
                         {/* CTA Section */}

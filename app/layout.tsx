@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Manrope } from "next/font/google";
 // import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
+import { Analytics, GoogleTagManagerNoScript } from "@/components/analytics/Analytics";
+import { CookieConsent } from "@/components/ui/CookieConsent";
 
 const manrope = Manrope({
   variable: "--font-manrope",
@@ -42,28 +44,29 @@ export const metadata: Metadata = {
     title: 'ControllerTech | Gestão Financeira Inteligente para PMEs',
     description:
       'Vende bem mas o caixa vive apertado? Um CFO Sênior por 1/3 do custo de um CLT. Diagnóstico gratuito.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'ControllerTech — Gestão Financeira para PMEs',
-      },
-    ],
+    // Imagem OG gerada por app/opengraph-image.tsx (next/og)
   },
   twitter: {
     card: 'summary_large_image',
     title: 'ControllerTech | Gestão Financeira Inteligente para PMEs',
     description:
       'Vende bem mas não sobra nada? Gestão financeira sênior para PMEs por 1/3 do custo de um CLT.',
-    images: ['/og-image.png'],
+    // Imagem do Twitter herda de app/opengraph-image.tsx
   },
   alternates: {
     canonical: 'https://controllertech.com.br',
   },
   icons: {
     icon: '/favicon.ico',
-    apple: '/apple-touch-icon.png',
+    // apple touch icon gerado por app/apple-icon.tsx
+  },
+  // Verificação de propriedade (Google Search Console / Bing). Preencha os
+  // valores em .env quando criar as propriedades; sem env, nada é renderizado.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GSC_VERIFICATION || undefined,
+    ...(process.env.NEXT_PUBLIC_BING_VERIFICATION
+      ? { other: { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_VERIFICATION } }
+      : {}),
   },
 };
 
@@ -78,7 +81,10 @@ export default function RootLayout({
       <body
         className={`${manrope.variable} font-sans antialiased bg-background text-foreground`}
       >
+        <GoogleTagManagerNoScript />
         {children}
+        <CookieConsent />
+        <Analytics />
       </body>
     </html>
     // </ClerkProvider>

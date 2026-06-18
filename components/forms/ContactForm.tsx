@@ -2,6 +2,7 @@
 
 import { useActionState, useEffect } from 'react';
 import { submitContactForm } from '@/app/actions/contact';
+import { trackLead } from '@/lib/analytics/track';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -24,6 +25,13 @@ const initialState = {
 
 export function ContactForm() {
     const [state, action, isPending] = useActionState(submitContactForm, initialState);
+
+    // Conversão: dispara evento de Lead quando o envio é bem-sucedido
+    useEffect(() => {
+        if (state.success) {
+            trackLead({ form: 'contato' });
+        }
+    }, [state.success]);
 
     // Redirect to WhatsApp after successful submission
     useEffect(() => {

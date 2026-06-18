@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import { trackWhatsAppClick } from '@/lib/analytics/track';
 
 const WHATSAPP_NUMBER = '5531990603750';
 const WHATSAPP_MESSAGE = encodeURIComponent(
@@ -28,6 +29,7 @@ export function WhatsAppButton() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Fale conosco pelo WhatsApp"
+            onClick={() => trackWhatsAppClick({ location: 'floating_button' })}
             initial={{ opacity: 0, y: 20, scale: 0.8 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.5, delay: 1.5, ease: 'easeOut' }}

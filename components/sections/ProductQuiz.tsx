@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ArrowLeft, RotateCcw, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { trackQuizComplete, trackWhatsAppClick } from '@/lib/analytics/track';
 
 /* ── Quiz Data ─────────────────────────────────────────────── */
 
@@ -116,6 +117,11 @@ export function ProductQuiz() {
         if (currentStep < totalSteps - 1) {
             setCurrentStep(currentStep + 1);
         } else {
+            const finalPoints = newAnswers.reduce((sum, p) => sum + p, 0);
+            trackQuizComplete({
+                product: getResult(finalPoints).product,
+                points: finalPoints,
+            });
             setShowResult(true);
         }
     }
@@ -305,6 +311,7 @@ export function ProductQuiz() {
                                                     href={buildWhatsAppUrl(result)}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
+                                                    onClick={() => trackWhatsAppClick({ location: 'quiz_result', product: result.product })}
                                                 >
                                                     {result.cta} <ArrowRight className="ml-2 w-4 h-4" />
                                                 </Link>
