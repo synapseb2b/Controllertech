@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Sparkles } from 'lucide-react';
 import Link from 'next/link';
+import { ProductQuiz } from '@/components/sections/ProductQuiz';
 
 const solutions = [
     {
@@ -43,18 +44,27 @@ const solutions = [
 
 export function Solutions() {
     return (
-        <section id="solutions" className="py-20 md:py-28 relative overflow-hidden bg-muted/5">
+        <section id="solutions" className="scroll-mt-24 py-20 md:py-28 relative overflow-hidden bg-muted/5">
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-chart-4/5 to-transparent" />
             <div className="container mx-auto px-4 relative z-10">
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    className="text-center mb-16"
+                    className="text-center mb-16 flex flex-col items-center"
                 >
+                    {/* H1 */}
                     <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-                        Qual é o seu <span className="text-gradient">momento atual</span>?
+                        Por onde <span className="text-gradient">começar</span>?
                     </h2>
+                    {/* H2 */}
+                    <p className="mt-4 max-w-2xl text-lg text-muted-foreground">
+                        Escolha a solução ideal para o momento da sua empresa — ou faça o teste e receba uma recomendação em 4 perguntas.
+                    </p>
+                    {/* Link para o teste */}
+                    <div className="mt-8">
+                        <ProductQuiz />
+                    </div>
                 </motion.div>
 
                 <div className="grid lg:grid-cols-3 gap-8 max-w-7xl mx-auto">

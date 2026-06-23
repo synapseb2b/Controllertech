@@ -14,7 +14,7 @@ readTime: "5 min"
 author: "ControllerTech"
 publishedAt: "2026-02-24"
 updatedAt: "2026-02-24"
-ctaText: "Sua operação financeira registra o passado ou projeta o futuro? Agende sua anamnese financeira gratuita — 30 min, sem compromisso."
+ctaText: "Sua operação financeira registra o passado ou projeta o futuro? Agende sua anamnese financeira — 30 min, sem compromisso."
 ctaProduct: "Gestão Premium (BPO)"
 ---
 

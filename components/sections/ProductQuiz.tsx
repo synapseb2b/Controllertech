@@ -1,8 +1,9 @@
 'use client';
 
 import { useState } from 'react';
+import { Dialog } from 'radix-ui';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, ArrowLeft, RotateCcw, Sparkles } from 'lucide-react';
+import { ArrowRight, ArrowLeft, RotateCcw, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { trackQuizComplete, trackWhatsAppClick } from '@/lib/analytics/track';
@@ -95,20 +96,37 @@ function getResult(totalPoints: number): Result {
 }
 
 function buildWhatsAppUrl(result: Result) {
-    const message = `Olá! Fiz o teste rápido no site e o resultado recomendou: ${result.product}. Gostaria de agendar um diagnóstico gratuito.`;
+    const message = `Olá! Fiz o teste rápido no site e o resultado recomendou: ${result.product}. Gostaria de agendar um diagnóstico.`;
     return `https://wa.me/5531990603750?text=${encodeURIComponent(message)}`;
 }
 
 /* ── Component ───────────────────────────────────────────────── */
 
+/**
+ * Teste de diagnóstico. Renderiza um gatilho compacto (pílula "Não sabe qual
+ * escolher? Faça o teste rápido") que abre o teste em um modal. A pílula é
+ * pensada para viver no cabeçalho da seção "Por onde começar?" (Solutions),
+ * acima dos 3 containers de solução.
+ */
 export function ProductQuiz() {
-    const [started, setStarted] = useState(false);
+    const [open, setOpen] = useState(false);
     const [currentStep, setCurrentStep] = useState(0);
     const [answers, setAnswers] = useState<number[]>([]);
     const [showResult, setShowResult] = useState(false);
 
     const totalSteps = questions.length;
-    const progress = showResult ? 100 : ((currentStep) / totalSteps) * 100;
+    const progress = showResult ? 100 : (currentStep / totalSteps) * 100;
+
+    function resetQuiz() {
+        setCurrentStep(0);
+        setAnswers([]);
+        setShowResult(false);
+    }
+
+    function handleOpenChange(next: boolean) {
+        setOpen(next);
+        if (!next) resetQuiz();
+    }
 
     function handleSelect(points: number) {
         const newAnswers = [...answers, points];
@@ -133,206 +151,153 @@ export function ProductQuiz() {
         }
     }
 
-    function handleReset() {
-        setStarted(false);
-        setCurrentStep(0);
-        setAnswers([]);
-        setShowResult(false);
-    }
-
     const totalPoints = answers.reduce((sum, p) => sum + p, 0);
     const result = getResult(totalPoints);
 
     return (
-        <section className="pb-20 md:pb-28 relative overflow-hidden bg-muted/5">
-            <div className="container mx-auto px-4 relative z-10">
-                <div className="max-w-2xl mx-auto">
-                    <AnimatePresence mode="wait">
-                        {/* ── Intro State ── */}
-                        {!started && (
-                            <motion.div
-                                key="intro"
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: -20 }}
-                                className="text-center"
-                            >
-                                <div className="relative bg-card/60 backdrop-blur-xl border border-border/50 rounded-3xl p-8 md:p-12 card-glow">
-                                    <div className="absolute inset-0 bg-grid opacity-20 rounded-3xl" />
-                                    <div className="relative z-10">
-                                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
-                                            <Sparkles className="w-4 h-4" />
-                                            Teste Rápido
-                                        </div>
-                                        <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-3">
-                                            {"Não sabe qual escolher?"}
-                                        </h3>
-                                        <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-                                            Responda 4 perguntas rápidas e descubra qual solução é ideal para o momento da sua empresa.
-                                        </p>
-                                        <Button
-                                            onClick={() => setStarted(true)}
-                                            className="h-12 px-8 text-base font-semibold rounded-full shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-[1.01] transition-all"
-                                        >
-                                            {"Começar o Teste"} <ArrowRight className="ml-2 w-4 h-4" />
-                                        </Button>
-                                    </div>
-                                </div>
-                            </motion.div>
-                        )}
+        <Dialog.Root open={open} onOpenChange={handleOpenChange}>
+            <Dialog.Trigger asChild>
+                <button
+                    type="button"
+                    className="group inline-flex items-center gap-3 rounded-full bg-card/70 backdrop-blur-xl border border-border/60 py-2 pl-5 pr-2 shadow-lg shadow-black/10 hover:border-primary/40 transition-all duration-300 cursor-pointer"
+                >
+                    <span className="text-sm font-medium text-muted-foreground">Não sabe qual escolher?</span>
+                    <span className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-2 text-sm font-bold text-primary-foreground shadow-md shadow-primary/30 group-hover:shadow-primary/50 transition-shadow">
+                        Faça o Teste Rápido
+                        <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                    </span>
+                </button>
+            </Dialog.Trigger>
 
-                        {/* ── Quiz Steps ── */}
-                        {started && !showResult && (
+            <Dialog.Portal>
+                <Dialog.Overlay className="fixed inset-0 z-[90] bg-black/70 backdrop-blur-sm data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+                <Dialog.Content className="fixed left-1/2 top-1/2 z-[100] w-[95vw] max-w-lg -translate-x-1/2 -translate-y-1/2 rounded-3xl border border-border/50 bg-card/95 backdrop-blur-xl p-6 md:p-8 shadow-2xl shadow-black/40 focus:outline-none data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=open]:zoom-in-95">
+                    <Dialog.Title className="text-lg font-bold text-foreground">
+                        Descubra o <span className="text-gradient">Momento Financeiro</span> da Sua Empresa
+                    </Dialog.Title>
+                    <Dialog.Description className="text-sm text-muted-foreground mt-1">
+                        Responda 4 perguntas rápidas e receba a solução ideal para o próximo passo.
+                    </Dialog.Description>
+
+                    <Dialog.Close asChild>
+                        <button
+                            type="button"
+                            aria-label="Fechar"
+                            className="absolute top-4 right-4 inline-flex h-8 w-8 items-center justify-center rounded-full text-muted-foreground hover:bg-muted hover:text-foreground transition-colors"
+                        >
+                            <X className="h-4 w-4" />
+                        </button>
+                    </Dialog.Close>
+
+                    {/* Progress Bar */}
+                    <div className="mt-5 mb-6">
+                        <div className="flex justify-between items-center mb-2">
+                            <span className="text-xs text-muted-foreground font-medium">
+                                {showResult ? 'Resultado' : `Pergunta ${currentStep + 1} de ${totalSteps}`}
+                            </span>
+                            <span className="text-xs text-muted-foreground">{Math.round(progress)}%</span>
+                        </div>
+                        <div className="h-1.5 bg-muted/30 rounded-full overflow-hidden">
+                            <motion.div
+                                className="h-full bg-gradient-to-r from-primary to-chart-4 rounded-full"
+                                initial={false}
+                                animate={{ width: `${progress}%` }}
+                                transition={{ duration: 0.4 }}
+                            />
+                        </div>
+                    </div>
+
+                    <AnimatePresence mode="wait">
+                        {!showResult ? (
                             <motion.div
                                 key={`step-${currentStep}`}
-                                initial={{ opacity: 0, x: 40 }}
+                                initial={{ opacity: 0, x: 30 }}
                                 animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -40 }}
-                                transition={{ duration: 0.3 }}
+                                exit={{ opacity: 0, x: -30 }}
+                                transition={{ duration: 0.25 }}
                             >
-                                <div className="relative bg-card/60 backdrop-blur-xl border border-border/50 rounded-3xl p-8 md:p-12 card-glow">
-                                    <div className="absolute inset-0 bg-grid opacity-20 rounded-3xl" />
-                                    <div className="relative z-10">
-                                        {/* Progress Bar */}
-                                        <div className="mb-8">
-                                            <div className="flex justify-between items-center mb-2">
-                                                <span className="text-xs text-muted-foreground font-medium">
-                                                    Pergunta {currentStep + 1} de {totalSteps}
-                                                </span>
-                                                <span className="text-xs text-muted-foreground">
-                                                    {Math.round(progress)}%
-                                                </span>
+                                <h3 className="text-xl md:text-2xl font-bold mb-6 text-foreground leading-tight">
+                                    {questions[currentStep].question}
+                                </h3>
+
+                                <div className="space-y-3">
+                                    {questions[currentStep].options.map((option, i) => (
+                                        <button
+                                            key={i}
+                                            onClick={() => handleSelect(option.points)}
+                                            className="w-full text-left p-4 rounded-2xl border border-border/50 bg-muted/20 hover:bg-primary/10 hover:border-primary/40 transition-all duration-200 group cursor-pointer"
+                                        >
+                                            <div className="flex items-center gap-4">
+                                                <div className="w-8 h-8 rounded-full border-2 border-border/50 group-hover:border-primary/60 flex items-center justify-center shrink-0 transition-colors">
+                                                    <span className="text-sm font-semibold text-muted-foreground group-hover:text-primary transition-colors">
+                                                        {String.fromCharCode(65 + i)}
+                                                    </span>
+                                                </div>
+                                                <span className="text-foreground font-medium">{option.label}</span>
                                             </div>
-                                            <div className="h-1.5 bg-muted/30 rounded-full overflow-hidden">
-                                                <motion.div
-                                                    className="h-full bg-gradient-to-r from-primary to-chart-4 rounded-full"
-                                                    initial={{ width: 0 }}
-                                                    animate={{ width: `${progress}%` }}
-                                                    transition={{ duration: 0.4 }}
-                                                />
-                                            </div>
-                                        </div>
-
-                                        {/* Question */}
-                                        <h3 className="text-xl md:text-2xl font-bold mb-8 text-foreground leading-tight">
-                                            {questions[currentStep].question}
-                                        </h3>
-
-                                        {/* Options */}
-                                        <div className="space-y-3">
-                                            {questions[currentStep].options.map((option, i) => (
-                                                <button
-                                                    key={i}
-                                                    onClick={() => handleSelect(option.points)}
-                                                    className="w-full text-left p-4 rounded-2xl border border-border/50 bg-muted/20 hover:bg-primary/10 hover:border-primary/40 transition-all duration-200 group cursor-pointer"
-                                                >
-                                                    <div className="flex items-center gap-4">
-                                                        <div className="w-8 h-8 rounded-full border-2 border-border/50 group-hover:border-primary/60 flex items-center justify-center shrink-0 transition-colors">
-                                                            <span className="text-sm font-semibold text-muted-foreground group-hover:text-primary transition-colors">
-                                                                {String.fromCharCode(65 + i)}
-                                                            </span>
-                                                        </div>
-                                                        <span className="text-foreground font-medium">
-                                                            {option.label}
-                                                        </span>
-                                                    </div>
-                                                </button>
-                                            ))}
-                                        </div>
-
-                                        {/* Back Button */}
-                                        {currentStep > 0 && (
-                                            <button
-                                                onClick={handleBack}
-                                                className="mt-6 flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-                                            >
-                                                <ArrowLeft className="w-4 h-4" />
-                                                Voltar
-                                            </button>
-                                        )}
-                                    </div>
+                                        </button>
+                                    ))}
                                 </div>
-                            </motion.div>
-                        )}
 
-                        {/* ── Result ── */}
-                        {started && showResult && (
+                                {currentStep > 0 && (
+                                    <button
+                                        onClick={handleBack}
+                                        className="mt-6 flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+                                    >
+                                        <ArrowLeft className="w-4 h-4" />
+                                        Voltar
+                                    </button>
+                                )}
+                            </motion.div>
+                        ) : (
                             <motion.div
                                 key="result"
-                                initial={{ opacity: 0, scale: 0.95 }}
+                                initial={{ opacity: 0, scale: 0.97 }}
                                 animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.95 }}
-                                transition={{ duration: 0.4 }}
+                                transition={{ duration: 0.3 }}
+                                className="text-center"
                             >
-                                <div className="relative bg-card/80 backdrop-blur-xl border border-primary/30 rounded-3xl p-8 md:p-12 shadow-2xl shadow-primary/10">
-                                    <div className="absolute inset-0 bg-grid opacity-20 rounded-3xl" />
-                                    <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-chart-4 to-primary rounded-t-3xl" />
+                                <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold mb-4">
+                                    {result.tag}
+                                </span>
 
-                                    <div className="relative z-10 text-center">
-                                        {/* Progress Complete */}
-                                        <div className="mb-8">
-                                            <div className="h-1.5 bg-muted/30 rounded-full overflow-hidden">
-                                                <motion.div
-                                                    className="h-full bg-gradient-to-r from-primary to-chart-4 rounded-full"
-                                                    initial={{ width: '75%' }}
-                                                    animate={{ width: '100%' }}
-                                                    transition={{ duration: 0.6 }}
-                                                />
-                                            </div>
-                                        </div>
+                                <h3 className="text-2xl font-extrabold tracking-tight mb-3">
+                                    {'Recomendação: '}
+                                    <span className="text-gradient">{result.product}</span>
+                                </h3>
 
-                                        {/* Tag */}
-                                        <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold mb-4">
-                                            {result.tag}
-                                        </span>
+                                <p className="text-base font-medium text-muted-foreground mb-3">{result.headline}</p>
+                                <p className="text-muted-foreground text-sm leading-relaxed mb-8">{result.description}</p>
 
-                                        {/* Product Name */}
-                                        <h3 className="text-2xl md:text-3xl font-extrabold tracking-tight mb-3">
-                                            {"Recomendação: "}<span className="text-gradient">{result.product}</span>
-                                        </h3>
+                                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                                    <Button
+                                        asChild
+                                        className="h-12 px-6 text-base font-semibold rounded-full shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-[1.01] transition-all"
+                                    >
+                                        <Link
+                                            href={buildWhatsAppUrl(result)}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={() => trackWhatsAppClick({ location: 'quiz_result', product: result.product })}
+                                        >
+                                            {result.cta} <ArrowRight className="ml-2 w-4 h-4" />
+                                        </Link>
+                                    </Button>
 
-                                        {/* Headline */}
-                                        <p className="text-lg font-medium text-muted-foreground mb-4">
-                                            {result.headline}
-                                        </p>
-
-                                        {/* Description */}
-                                        <p className="text-muted-foreground text-sm leading-relaxed mb-8 max-w-lg mx-auto">
-                                            {result.description}
-                                        </p>
-
-                                        {/* CTAs */}
-                                        <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                                            <Button
-                                                asChild
-                                                className="h-12 px-8 text-base font-semibold rounded-full shadow-lg shadow-primary/30 hover:shadow-primary/50 hover:scale-[1.01] transition-all"
-                                            >
-                                                <Link
-                                                    href={buildWhatsAppUrl(result)}
-                                                    target="_blank"
-                                                    rel="noopener noreferrer"
-                                                    onClick={() => trackWhatsAppClick({ location: 'quiz_result', product: result.product })}
-                                                >
-                                                    {result.cta} <ArrowRight className="ml-2 w-4 h-4" />
-                                                </Link>
-                                            </Button>
-
-                                            <Button
-                                                variant="secondary"
-                                                onClick={handleReset}
-                                                className="h-12 px-6 text-base font-medium rounded-full bg-muted text-foreground hover:bg-muted/80"
-                                            >
-                                                <RotateCcw className="mr-2 w-4 h-4" />
-                                                Refazer Teste
-                                            </Button>
-                                        </div>
-                                    </div>
+                                    <Button
+                                        variant="secondary"
+                                        onClick={resetQuiz}
+                                        className="h-12 px-6 text-base font-medium rounded-full bg-muted text-foreground hover:bg-muted/80"
+                                    >
+                                        <RotateCcw className="mr-2 w-4 h-4" />
+                                        Refazer Teste
+                                    </Button>
                                 </div>
                             </motion.div>
                         )}
                     </AnimatePresence>
-                </div>
-            </div>
-        </section>
+                </Dialog.Content>
+            </Dialog.Portal>
+        </Dialog.Root>
     );
 }

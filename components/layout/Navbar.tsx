@@ -45,7 +45,7 @@ export function Navbar() {
 
                     <div className="hidden md:flex items-center gap-4">
                         <Button size="sm" className="rounded-full px-6 shadow-lg shadow-primary/30 hover:shadow-primary/50 transition-shadow" asChild>
-                            <Link href="#contact">Diagnóstico Gratuito</Link>
+                            <Link href="#contact">Agendar Diagnóstico</Link>
                         </Button>
                     </div>
 
@@ -65,7 +65,7 @@ export function Navbar() {
                                 <Link href="/blog" className="text-lg font-medium hover:text-primary transition-colors">Blog</Link>
                                 <div className="h-px bg-border my-4" />
                                 <Button className="w-full rounded-full" asChild>
-                                    <Link href="#contact">Diagnóstico Gratuito</Link>
+                                    <Link href="#contact">Agendar Diagnóstico</Link>
                                 </Button>
                             </div>
                         </SheetContent>

@@ -14,7 +14,7 @@ readTime: "7 min"
 author: "ControllerTech"
 publishedAt: "2024-08-27"
 updatedAt: "2026-06-18"
-ctaText: "Quer conhecer a fundo os números da sua clínica? Agende um diagnóstico financeiro gratuito."
+ctaText: "Quer conhecer a fundo os números da sua clínica? Agende um diagnóstico financeiro."
 ctaProduct: "BPO Financeiro"
 howTo:
   name: "Como calcular o preço de venda de uma cirurgia plástica"

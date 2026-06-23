@@ -151,7 +151,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
     };
 
     const whatsAppMessage = encodeURIComponent(
-        `Olá! Li o artigo "${post.title}" no blog da ControllerTech e gostaria de agendar um diagnóstico financeiro gratuito.`
+        `Olá! Li o artigo "${post.title}" no blog da ControllerTech e gostaria de agendar um diagnóstico financeiro.`
     );
 
     return (
@@ -219,7 +219,7 @@ export default async function BlogArticlePage({ params }: PageProps) {
                                         target="_blank"
                                         rel="noopener noreferrer"
                                     >
-                                        {"Agendar Diagnóstico Gratuito"} <ArrowRight className="ml-2 w-5 h-5" />
+                                        {"Agendar Diagnóstico"} <ArrowRight className="ml-2 w-5 h-5" />
                                     </a>
                                 </Button>
                                 <Button

@@ -150,7 +150,7 @@ export function ContactForm() {
                                 </>
                             ) : (
                                 <>
-                                    {"Agendar Diagnóstico Gratuito"} <ArrowRight className="ml-2 h-5 w-5" />
+                                    {"Agendar Diagnóstico"} <ArrowRight className="ml-2 h-5 w-5" />
                                 </>
                             )}
                         </Button>

@@ -11,7 +11,6 @@ import { FAQ } from '@/components/sections/FAQ';
 import { ContactForm } from '@/components/forms/ContactForm';
 import { Footer } from '@/components/layout/Footer';
 import { WhatsAppButton } from '@/components/ui/WhatsAppButton';
-import { ProductQuiz } from '@/components/sections/ProductQuiz';
 
 const jsonLd = {
   organization: {
@@ -134,7 +133,7 @@ const jsonLd = {
         name: 'Quanto custa terceirizar a gestão financeira da minha empresa?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'Na ControllerTech, os planos começam a partir de R$ 3-5k/mês — cerca de 1/3 do custo de um analista financeiro CLT júnior (R$ 8-10k com encargos). A diferença é que você não contrata uma pessoa: contrata um time multidisciplinar liderado por CFO Sênior, com tecnologia integrada e auditoria contínua. Solicite um diagnóstico gratuito para receber uma proposta personalizada.',
+          text: 'Na ControllerTech, os planos começam a partir de R$ 3-5k/mês — cerca de 1/3 do custo de um analista financeiro CLT júnior (R$ 8-10k com encargos). A diferença é que você não contrata uma pessoa: contrata um time multidisciplinar liderado por CFO Sênior, com tecnologia integrada e auditoria contínua. Solicite um diagnóstico para receber uma proposta personalizada.',
         },
       },
       {
@@ -142,7 +141,7 @@ const jsonLd = {
         name: 'Preciso de gestão financeira para minha clínica ou escritório, por onde começo?',
         acceptedAnswer: {
           '@type': 'Answer',
-          text: 'O primeiro passo é o nosso Diagnóstico Financeiro Gratuito. Em 30 minutos, analisamos a saúde do seu caixa, identificamos vazamentos de margem e mostramos exatamente onde você está perdendo dinheiro. A partir daí, recomendamos o plano ideal — desde organização básica (Kit de Organização) até gestão completa (BPO Financeiro) ou estratégia de crescimento (CFO as a Service). Atendemos clínicas, escritórios de advocacia, agências e empresas de serviço.',
+          text: 'O primeiro passo é o nosso Diagnóstico Financeiro. Em 30 minutos, analisamos a saúde do seu caixa, identificamos vazamentos de margem e mostramos exatamente onde você está perdendo dinheiro. A partir daí, recomendamos o plano ideal — desde organização básica (Kit de Organização) até gestão completa (BPO Financeiro) ou estratégia de crescimento (CFO as a Service). Atendemos clínicas, escritórios de advocacia, agências e empresas de serviço.',
         },
       },
     ],
@@ -221,7 +220,6 @@ export default function Home() {
       <Problem />
       <Mechanism />
       <Solutions />
-      <ProductQuiz />
       <Benefits />
       <Founder />
 

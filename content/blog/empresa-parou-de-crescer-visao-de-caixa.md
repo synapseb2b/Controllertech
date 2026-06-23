@@ -15,7 +15,7 @@ readTime: "5 min"
 author: "ControllerTech"
 publishedAt: "2026-02-24"
 updatedAt: "2026-02-24"
-ctaText: "Quanto de caixa livre você tem para os próximos 90 dias? Se não sabe responder, agende sua anamnese financeira gratuita."
+ctaText: "Quanto de caixa livre você tem para os próximos 90 dias? Se não sabe responder, agende sua anamnese financeira."
 ctaProduct: "CFO as a Service"
 ---
 

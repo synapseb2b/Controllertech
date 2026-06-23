@@ -14,7 +14,7 @@ readTime: "4 min"
 author: "ControllerTech"
 publishedAt: "2026-02-24"
 updatedAt: "2026-02-24"
-ctaText: "Quer saber onde está o sangramento? Agende sua anamnese financeira gratuita — 30 minutos, sem compromisso."
+ctaText: "Quer saber onde está o sangramento? Agende sua anamnese financeira — 30 minutos, sem compromisso."
 ctaProduct: "Kit de Organização"
 ---
 

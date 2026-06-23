@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: 'ControllerTech',
     title: 'ControllerTech | Gestão Financeira Inteligente para PMEs',
     description:
-      'Vende bem mas o caixa vive apertado? Um CFO Sênior por 1/3 do custo de um CLT. Diagnóstico gratuito.',
+      'Vende bem mas o caixa vive apertado? Um CFO Sênior por 1/3 do custo de um CLT. Agende seu diagnóstico.',
     // Imagem OG gerada por app/opengraph-image.tsx (next/og)
   },
   twitter: {

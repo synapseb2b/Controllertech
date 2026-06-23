@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/button';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { ArrowRight, CheckCircle2, Play } from 'lucide-react';
+import { ArrowRight, CheckCircle2, Compass } from 'lucide-react';
 import Link from 'next/link';
 
 export function Hero() {
@@ -79,8 +79,8 @@ export function Hero() {
                                 </Link>
                             </Button>
                             <Button size="lg" variant="outline" className="h-14 px-8 text-base font-semibold rounded-full border-2 border-border/50 hover:bg-card/50 hover:border-primary/30 transition-all duration-300 group" asChild>
-                                <Link href="#mechanism">
-                                    <Play className="mr-2 h-4 w-4 text-primary group-hover:scale-110 transition-transform" /> Ver como funciona
+                                <Link href="#solutions">
+                                    <Compass className="mr-2 h-4 w-4 text-primary group-hover:scale-110 transition-transform" /> Por onde começar?
                                 </Link>
                             </Button>
                         </motion.div>
